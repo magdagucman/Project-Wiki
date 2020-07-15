@@ -1,0 +1,16 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block body %}
+    {{ entry|safe }}
+    {% if entry and not title == "No such entry!" %}
+    <a href="{% url 'edit' title %}">Edit Entry</a>
+    {% endif %}
+    {% if not entry %}
+    <h1>Sorry, this entry already exists!
+    {% endif %}
+
+{% endblock %}
